@@ -1,6 +1,7 @@
 import { ApiProperty, PartialType } from '@nestjs/swagger';
 import {
   IsInt,
+  IsNotEmpty,
   IsNumber,
   IsOptional,
   IsPositive,
@@ -9,29 +10,26 @@ import {
 } from 'class-validator';
 
 export class CreateVehicleDto {
-  @IsOptional()
-  @IsNumber()
+  @IsInt()
+  @IsPositive()
+  @IsNotEmpty()
   @ApiProperty()
-  id?: number;
+  model_id: number;
 
   @IsString()
-  @IsOptional()
-  @MinLength(3)
-  @ApiProperty()
-  model?: string;
-
-  @IsString()
+  @IsNotEmpty()
   @MinLength(3)
   @ApiProperty()
   vin: string;
 
   @IsInt()
   @IsPositive()
-  @IsOptional()
+  @IsNotEmpty()
   @ApiProperty()
-  year?: number;
+  year: number;
 
   @IsString()
+  @IsNotEmpty()
   @MinLength(3)
   @ApiProperty()
   color: string;
@@ -44,11 +42,12 @@ export class CreateVehicleDto {
 
   @IsNumber()
   @IsPositive()
-  @IsOptional()
+  @IsNotEmpty()
   @ApiProperty()
   price: number;
 
   @IsString()
+  @IsNotEmpty()
   @MinLength(3)
   @ApiProperty()
   status: string;

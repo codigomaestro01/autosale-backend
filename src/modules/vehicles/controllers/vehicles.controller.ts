@@ -7,8 +7,8 @@ export class VehiclesController {
   constructor(private readonly vehiclesService: VehiclesService) {}
 
   @Get()
-  getVehiclesAll() {
-    return 'Lista de vehiculos';
+  findAll() {
+    return this.vehiclesService.findAll();
   }
 
   @Post()
