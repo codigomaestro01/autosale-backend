@@ -14,10 +14,11 @@ export class CreateVehicleDto {
   @ApiProperty()
   id?: number;
 
-  @IsNumber()
+  @IsString()
   @IsOptional()
+  @MinLength(3)
   @ApiProperty()
-  model_id: number;
+  model?: string;
 
   @IsString()
   @MinLength(3)
